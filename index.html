@@ -148,21 +148,48 @@
       border-color: #f06292;
     }
 
-    /* SCREEN 3: BOUQUET */
+   /* SCREEN 3: BOUQUET COLORATO CON TOCCHI DI VIOLA */
     .flower-notes {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
       text-align: left;
-      font-size: 12px;
+      font-size: 13px;
       width: 100%;
     }
 
     .note-box {
-      background: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #f8bbd0;
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 12px;
+      border: 2px solid #ce93d8; /* Bordo viola chiaro */
+      box-shadow: 0 3px 8px rgba(156, 39, 176, 0.12);
+      transition: transform 0.2s;
+    }
+
+    .note-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .note-box:nth-child(1) { border-left: 5px solid #ab47bc; } /* Viola */
+    .note-box:nth-child(2) { border-left: 5px solid #ff4081; } /* Rosa */
+    .note-box:nth-child(3) { border-left: 5px solid #7e57c2; } /* Indaco/Viola */
+    .note-box:nth-child(4) { border-left: 5px solid #ba68c8; } /* Lilla */
+
+    /* INPUT STYLES AGGIORNATI */
+    input[type="text"] {
+      width: 80%;
+      padding: 12px;
+      border: 2px solid #f48fb1;
+      border-radius: 20px;
+      text-align: center;
+      margin-bottom: 15px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    input:focus {
+      border-color: #ab47bc;
     }
 
     /* SCREEN 4: GALLERIA FOTO (FOTO PIÙ GRANDI) */
@@ -286,6 +313,15 @@
 
   <div class="container">
 
+    <!-- SCHERMATA 0: INSERISCI PASSWORD INIZIALE -->
+    <div id="screen-0" class="screen active">
+      <div class="cat-avatar">🔒🐱</div>
+      <h2>Area Riservata!</h2>
+      <p class="subtitle">Inserisci la password per entrare<br><em>(Suggerimento: il nome del nostro primo figlio)</em></p>
+      <input type="text" id="passInput" placeholder="Scrivi qui la password...">
+      <button onclick="checkInitialPassword()">ENTRA 💜</button>
+    </div>
+
     <!-- SCHERMATA 1: INTRO -->
     <div id="screen-1" class="screen active">
       <div class="cat-avatar">🐱</div>
@@ -308,15 +344,15 @@
       </div>
     </div>
 
-    <!-- SCHERMATA 3: BOUQUET -->
+    <!-- SCHERMATA 3: BOUQUET COLORATO CON TOCCHI DI VIOLA -->
     <div id="screen-3" class="screen">
-      <h2>dei fiori(nuovamente finti)</h2>
-      <div style="font-size: 80px; margin: 10px 0;">💐</div>
+      <h2>I tuoi fiori colorati 💜✨</h2>
+      <div style="font-size: 70px; margin: 10px 0;">💐🌸🪻🌺🪻</div>
       <div class="flower-notes">
-        <div class="note-box">per ogni giorno in cui ti senti triste.</div>
-        <div class="note-box">per tutte le volte che mi sei stata vicino.</div>
-        <div class="note-box">per tutte le volte in cui eravamo lontani.</div>
-        <div class="note-box">per farti capire quanto ti amo💜.</div>
+        <div class="note-box">🌸 Per ogni giorno in cui ti senti triste.</div>
+        <div class="note-box">🪻 Per tutte le volte che mi sei stata vicino.</div>
+        <div class="note-box">🌺 Per tutte le volte in cui eravamo lontani.</div>
+        <div class="note-box">💜 Per farti capire quanto ti amo.</div>
       </div>
       <button class="home-btn" onclick="goToScreen(2)">🏠</button>
     </div>
@@ -401,6 +437,16 @@
   </div>
 
   <script>
+
+    function checkInitialPassword() {
+      const pass = document.getElementById('passInput').value.trim().toLowerCase();
+      if (pass === "pingu") {
+        goToScreen(1);
+      } else {
+        alert("Password sbagliata! Ricordati il suggerimento 😉");
+      }
+    }
+    
     function goToScreen(screenNumber) {
       document.querySelectorAll('.screen').forEach(screen => {
         screen.classList.remove('active');
