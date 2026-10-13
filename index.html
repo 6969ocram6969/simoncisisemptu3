@@ -119,7 +119,7 @@
       justify-content: center;
     }
 
-    /* SCREEN 1: INTRO */
+    /* SCREEN 0 & 1: INTRO */
     .cat-avatar {
       font-size: 60px;
       margin-bottom: 15px;
@@ -148,7 +148,7 @@
       border-color: #f06292;
     }
 
-   /* SCREEN 3: BOUQUET COLORATO CON TOCCHI DI VIOLA */
+    /* SCREEN 3: BOUQUET COLORATO CON TOCCHI DI VIOLA */
     .flower-notes {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -176,7 +176,7 @@
     .note-box:nth-child(3) { border-left: 5px solid #7e57c2; } /* Indaco/Viola */
     .note-box:nth-child(4) { border-left: 5px solid #ba68c8; } /* Lilla */
 
-    /* INPUT STYLES AGGIORNATI */
+    /* INPUT STYLES */
     input[type="text"] {
       width: 80%;
       padding: 12px;
@@ -188,7 +188,7 @@
       font-size: 15px;
     }
 
-    input:focus {
+    input[type="text"]:focus {
       border-color: #ab47bc;
     }
 
@@ -263,18 +263,7 @@
       margin-bottom: 12px;
     }
 
-    /* SCREEN 6: UNLOCK SURPRISE */
-    input[type="text"] {
-      width: 80%;
-      padding: 12px;
-      border: 2px solid #f48fb1;
-      border-radius: 20px;
-      text-align: center;
-      margin-bottom: 15px;
-      outline: none;
-    }
-
-     /* SCREEN 7: CANZONE */
+    /* SCREEN 7: CANZONE */
     .music-container {
       width: 100%;
       display: flex;
@@ -318,12 +307,12 @@
       <div class="cat-avatar">🔒🐱</div>
       <h2>Area Riservata!</h2>
       <p class="subtitle">Inserisci la password per entrare<br><em>(Suggerimento: il nome del nostro primo figlio)</em></p>
-      <input type="text" id="passInput" placeholder="Scrivi qui la password...">
+      <input type="text" id="passInput" placeholder="Scrivi qui la password..." onkeypress="if(event.key==='Enter') checkInitialPassword()">
       <button onclick="checkInitialPassword()">ENTRA 💜</button>
     </div>
 
     <!-- SCHERMATA 1: INTRO -->
-    <div id="screen-1" class="screen active">
+    <div id="screen-1" class="screen">
       <div class="cat-avatar">🐱</div>
       <h2>Buon anniversario simoncì💜</h2>
       <div class="btn-group">
@@ -392,7 +381,6 @@
         <p>Ricordo a pieno il giorno in cui ho sentito quella piccola fiamma accendersi grazie a te, che da piccola oggi è diventata come un incendio che non potrà mai spegnersi perchè per fortuna continuiamo a buttarci benzina dentro.</p>
         <p>Ricordo di tutti i momenti, felici e non, passati assieme indipendentemente dalla distanza che c'è. Di tutti quei momenti in cui mi hai messo la testa apposto,di tutte le volte in cui mi hai aiutato, le volte in cui mi sei stata vicino.</p>
         <p>Sei una persona stupenda sia fuori che dentro, da ammirare (ma mai quanto il tuo fan n°1) e da cui prendere spunto come faccio io. E si Amore, anche tu sei il mio tutto💜.</p>
-        <p></p>
         <p style="text-align: right; margin-top: 20px;"><em>Ti amo tanto, sempre di più💜<br>Marcolì</em></p>
       </div>
       <button class="home-btn" onclick="goToScreen(2)">🏠</button>
@@ -403,7 +391,7 @@
       <div style="font-size: 50px; margin-bottom: 10px;">❓</div>
       <h2>Un'ultima sorpresa...</h2>
       <p class="subtitle">Scrivi la data di oggi ma di 1 anno fa</p>
-      <input type="text" id="nameInput" placeholder="GG/MM/AAAA">
+      <input type="text" id="nameInput" placeholder="GG/MM/AAAA" onkeypress="if(event.key==='Enter') unlockSurprise()">
       <button onclick="unlockSurprise()">SBLOCCA</button>
       <button class="home-btn" onclick="goToScreen(2)">🏠</button>
     </div>
@@ -437,6 +425,12 @@
   </div>
 
   <script>
+    function goToScreen(screenNumber) {
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+      document.getElementById('screen-' + screenNumber).classList.add('active');
+    }
 
     function checkInitialPassword() {
       const pass = document.getElementById('passInput').value.trim().toLowerCase();
@@ -445,13 +439,6 @@
       } else {
         alert("Password sbagliata! Ricordati il suggerimento 😉");
       }
-    }
-    
-    function goToScreen(screenNumber) {
-      document.querySelectorAll('.screen').forEach(screen => {
-        screen.classList.remove('active');
-      });
-      document.getElementById('screen-' + screenNumber).classList.add('active');
     }
 
     function unlockSurprise() {
