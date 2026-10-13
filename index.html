@@ -162,7 +162,7 @@
       background: #ffffff;
       padding: 12px;
       border-radius: 12px;
-      border: 2px solid #ce93d8; /* Bordo viola chiaro */
+      border: 2px solid #ce93d8;
       box-shadow: 0 3px 8px rgba(156, 39, 176, 0.12);
       transition: transform 0.2s;
     }
@@ -171,10 +171,10 @@
       transform: translateY(-2px);
     }
 
-    .note-box:nth-child(1) { border-left: 5px solid #ab47bc; } /* Viola */
-    .note-box:nth-child(2) { border-left: 5px solid #ff4081; } /* Rosa */
-    .note-box:nth-child(3) { border-left: 5px solid #7e57c2; } /* Indaco/Viola */
-    .note-box:nth-child(4) { border-left: 5px solid #ba68c8; } /* Lilla */
+    .note-box:nth-child(1) { border-left: 5px solid #ab47bc; }
+    .note-box:nth-child(2) { border-left: 5px solid #ff4081; }
+    .note-box:nth-child(3) { border-left: 5px solid #7e57c2; }
+    .note-box:nth-child(4) { border-left: 5px solid #ba68c8; }
 
     /* INPUT STYLES */
     input[type="text"] {
@@ -192,7 +192,7 @@
       border-color: #ab47bc;
     }
 
-    /* SCREEN 4: GALLERIA FOTO (FOTO PIÙ GRANDI) */
+    /* SCREEN 4: GALLERIA FOTO */
     .photo-gallery {
       display: flex;
       flex-direction: column;
@@ -223,8 +223,8 @@
     }
 
     .polaroid-item img {
-      width: 150px;  /* Dimensione ingrandita */
-      height: 190px; /* Dimensione ingrandita */
+      width: 150px;
+      height: 190px;
       object-fit: cover;
       border-radius: 6px;
       background-color: #f0f0f0;
@@ -275,7 +275,7 @@
     .video-responsive {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* Rapporto 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 12px;
@@ -302,7 +302,7 @@
 
   <div class="container">
 
-    <!-- SCHERMATA 0: INSERISCI PASSWORD INIZIALE -->
+    <!-- SCHERMATA 0: INSERISCI PASSWORD INIZIALE (UNICA ATTIVA ALL'INIZIO) -->
     <div id="screen-0" class="screen active">
       <div class="cat-avatar">🔒🐱</div>
       <h2>Area Riservata!</h2>
@@ -396,13 +396,12 @@
       <button class="home-btn" onclick="goToScreen(2)">🏠</button>
     </div>
 
-    <!-- SCHERMATA 7: CANZONE (NAYT - TUTTO IL RESTO È NOI) -->
+    <!-- SCHERMATA 7: CANZONE -->
     <div id="screen-7" class="screen">
       <h2>La nostra canzone, te la dedico💜</h2>
       <p class="subtitle">Nayt - Tutto il resto è noi</p>
       
       <div class="music-container">
-        <!-- Video YouTube Embed Corretto -->
         <div class="video-responsive">
           <iframe 
             src="https://www.youtube.com/embed/p1o1H5IAn40" 
@@ -412,7 +411,6 @@
           </iframe>
         </div>
 
-        <!-- Lettore Audio Locale (rinomina il file in canzone.mp3) -->
         <audio controls>
           <source src="canzone.mp3" type="audio/mpeg">
           Il tuo browser non supporta l'elemento audio.
